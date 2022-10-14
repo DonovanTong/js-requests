@@ -10,7 +10,7 @@
 */
 
 // CODE HERE
-
+const sayHelloButton = document.querySelector('#say-hello-button')
 
 // PROBLEM 2
 /*
@@ -20,7 +20,11 @@
 */
 
 // CODE HERE
-
+function fontColor() {
+    sayHelloButton.style.backgroundColor = 'black'
+    sayHelloButton.style.color = 'white'
+}
+sayHelloButton.addEventListener('mouseover', fontColor)
 
 // PROBLEM 3
 /*
@@ -32,8 +36,11 @@
 */
 
 // CODE HERE
-
-
+function unstyle() {
+    sayHelloButton.style.backgroundColor = '#EFEFEF'
+    sayHelloButton.style.color = 'black'
+}
+sayHelloButton.addEventListener('mouseout', unstyle)
 // PROBLEM 4
 /*
     Now lets see if we can make a request to our server when we click the button
@@ -53,7 +60,7 @@ const sayHello = () => {
 // DO NOT EDIT FUNCTION
 
 // CODE HERE
-
+sayHelloButton.addEventListener('click', sayHello)
 
 // PROBLEM 5 
 /*
@@ -68,6 +75,14 @@ const sayHello = () => {
 
 const ohMy = () => {
     // YOUR CODE HERE
+    axios.get('http://localhost:3000/animals')
+    .then((response) => {
+        for (let i = 0; i < response.data; i++) {
+            const newP = document.createElement('p')
+            newP.textContent = 'p'[i]
+            document.append(newP)
+        }
+    })
 }
 
 document.getElementById('animals-button').addEventListener('click', ohMy)
@@ -86,10 +101,16 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
     We'll be updating this function in the next problem.
 */
 
-const repeatMyParam = () => {
+const repeatMyParam = (event) => {
     //YOUR CODE HERE
+    axios.get('http://localhost:3000/repeat/DonovanTong')
+    .then((response) => {
+        console.log(response.data)
+        document.querySelector('#repeat-text').textContent = response.data
+        document.querySelector('#repeat-text').style.display = 'block'
+    })
 }
-
+document.querySelector('#repeat-button').addEventListener('click', repeatMyParam)
 // PROBLEM 7
 /*
     Now that we have the response data, let's add it to our web page! 
@@ -113,9 +134,12 @@ const repeatMyParam = () => {
 */
 
 // CODE HERE
+function queryTest (event) {
+    axios.get('http://localhost:3000/query-test/?name=Don')
+    
+}
 
-
-
+document.querySelector('#query-button').addEventListener('click', queryTest)
 ////////////////
 //INTERMEDIATE//
 ////////////////
@@ -134,7 +158,7 @@ const repeatMyParam = () => {
     In the function that you wrote for Problem 8, change the URL to test a couple different scenarios. 
 
     1: Send no queries on the URL -- what happened? 
-
+    nothing?
     2: Send more than 1 query on the URL -- what happened? 
 */
 
@@ -166,3 +190,11 @@ const repeatMyParam = () => {
 */
 
 // CODE HERE 
+
+function createFood(event) {
+    input = document.querySelector('input') {
+        
+    }
+
+
+}
